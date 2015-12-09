@@ -20,6 +20,12 @@ import org.xml.sax.SAXException;
 
 /**
  * Servlet implementation class ChatServlet
+ * 
+ *  author: Niels Bubel
+ *  mail: mail@niels-bubel.de
+ *  Version: 09.12.2015
+ *  
+ * 
  */
 @WebServlet("/ChatControl")
 public class ChatControl extends HttpServlet {
