@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Cambi - Chat -Client</title>
+<script type="text/javascript" src="ClientControl.js"></script>
+<style>
+  .versteckt { position:absolute; top:-10px; left:-10px; width:10px; height:10px; }
+  .datumUndName { font-size: small; font-style: italic;}
+</style>
+
+</head>
+<body onload="getMessages()">
+	<article class="chatfenster">
+	<h2>Chatverlauf</h2>
+	<form id="ChatFormular" name="ChatClient" method="post" action="http://localhost:8080/CambiChat/ChatControl" target="verstecktesFrame">
+		<p>Name:</p> <input id="Name" type="text" name="name"><br> 
+		<!-- Empfänger:<input type="number" name="group-id"><br> -->
+		<p>Nachricht:</p><input id="Nachricht" type="text" name="message"><br><br>
+		<input value="Abschicken" type="button" onclick="abschicken()" >
+		<br><br>
+	</form>
+	<hr>
+		<div id="chatverlauf">
+		</div>
+	</article>
+	
+	<iframe name="verstecktesFrame" class="versteckt"></iframe>
+
+</body>
+</html>

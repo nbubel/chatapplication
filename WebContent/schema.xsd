@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://localhost:8080/CambiChat/" xmlns="http://localhost:8080/CambiChat/">
+	<xs:element name="messages">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="message">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="id" type="xs:integer" />
+							<xs:element name="date" type="xs:date" />
+							<xs:element name="time" type="xs:time" />
+							<xs:element name="name" type="xs:string" />
+							<xs:element name="nachricht" type="xs:string" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

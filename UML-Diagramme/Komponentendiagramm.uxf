@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>6</zoom_level>
+  <element>
+    <type>com.baselet.element.old.element.Component</type>
+    <coordinates>
+      <x>318</x>
+      <y>66</y>
+      <w>300</w>
+      <h>312</h>
+    </coordinates>
+    <panel_attributes> 
+'Server-Chat-Anwendung</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Component</type>
+    <coordinates>
+      <x>0</x>
+      <y>66</y>
+      <w>210</w>
+      <h>312</h>
+    </coordinates>
+    <panel_attributes> 
+'Datenbankserver</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Component</type>
+    <coordinates>
+      <x>738</x>
+      <y>66</y>
+      <w>210</w>
+      <h>312</h>
+    </coordinates>
+    <panel_attributes> 
+'Client-Anwendung</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Component</type>
+    <coordinates>
+      <x>786</x>
+      <y>156</y>
+      <w>120</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes> 
+'User-Interface</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Component</type>
+    <coordinates>
+      <x>786</x>
+      <y>258</y>
+      <w>120</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes> 
+'ClientControl
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Component</type>
+    <coordinates>
+      <x>474</x>
+      <y>204</y>
+      <w>120</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes> 
+'Chat-Control
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Component</type>
+    <coordinates>
+      <x>474</x>
+      <y>120</y>
+      <w>120</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes> 
+'Message-Control</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Component</type>
+    <coordinates>
+      <x>474</x>
+      <y>282</y>
+      <w>120</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes> 
+'Security
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Component</type>
+    <coordinates>
+      <x>336</x>
+      <y>120</y>
+      <w>120</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes> 
+'Tools</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Component</type>
+    <coordinates>
+      <x>336</x>
+      <y>204</y>
+      <w>120</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes> 
+'User-Control</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Component</type>
+    <coordinates>
+      <x>336</x>
+      <y>282</y>
+      <w>120</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes> 
+'
+DDatenbank-Connection</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>600</x>
+      <y>282</y>
+      <w>198</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;[v]-(()-[^]&gt;</panel_attributes>
+    <additional_attributes>18;18;186;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>576</x>
+      <y>120</y>
+      <w>222</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;[v]-(()-[^]&gt;</panel_attributes>
+    <additional_attributes>210;150;120;150;120;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Component</type>
+    <coordinates>
+      <x>36</x>
+      <y>204</y>
+      <w>120</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes> 
+'Group
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Component</type>
+    <coordinates>
+      <x>36</x>
+      <y>132</y>
+      <w>120</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes> 
+'User</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Component</type>
+    <coordinates>
+      <x>36</x>
+      <y>282</y>
+      <w>120</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes> 
+'Message
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>192</x>
+      <y>282</y>
+      <w>156</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;[v]-(()-[^]&gt;</panel_attributes>
+    <additional_attributes>18;18;144;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>192</x>
+      <y>312</y>
+      <w>156</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;[v]-(()-[^]&gt;</panel_attributes>
+    <additional_attributes>144;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>240</x>
+      <y>306</y>
+      <w>60</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>SQL
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>684</x>
+      <y>312</y>
+      <w>60</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>XML
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>666</x>
+      <y>174</y>
+      <w>60</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>HTML
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

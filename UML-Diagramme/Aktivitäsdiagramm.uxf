@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>5</zoom_level>
+  <element>
+    <type>com.baselet.element.old.allinone.ActivityDiagramText</type>
+    <coordinates>
+      <x>160</x>
+      <y>0</y>
+      <w>863</w>
+      <h>534</h>
+    </coordinates>
+    <panel_attributes>title:Chat-System
+Start
+User A logt sich mit ID und Passwort ein
+User identifizieren
+	[Daten nicht korrekt]
+	End
+	
+	[Daten korrekt]
+	Chatpartner bzw. Gruppe auswählen~id1
+		[Partner oder Gruppe ist\ nicht vorhanden]
+		User A wählt einen Partner aus\oder erstellt eine Gruppe
+		-&gt;id1
+		
+		[Partner oder Gruppe ist\ nicht vorhanden]
+		User wählt keinen Partner aus\ und erstellt keine Gruppe
+		End
+		
+		[Partner oder Gruppe mit User A vorhanden]
+		Aktion auswählen~id2
+			[Nachricht schreiben]
+			User A schreibt eine Nachricht\ an Partner P oder Gruppe G&gt;
+			&gt;Partner P oder User aus Gruppe G \schreibt eine Nachricht zurück
+			-&gt;id2
+
+			[Chat beenden mit Speichern]
+			
+			[Chat beenden ohne Speichern]
+
+			[Partner wechseln]
+			-&gt;id1
+		End</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
