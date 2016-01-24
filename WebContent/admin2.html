@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Cambi-Chat-System | Admin</title>
+<script type="text/javascript" src="ClientControl.js"></script>
+<style>
+.versteckt {
+	position: absolute;
+	top: -10px;
+	left: -10px;
+	width: 10px;
+	height: 10px;
+}
+
+.datumUndName {
+	font-size: small;
+	font-style: italic;
+}
+
+nav ul li {
+	display: inline-block;
+	padding-right: 5px;
+}
+
+nav ul {
+	margin: 0px;
+	padding: 0px 0px 10px 0px;
+}
+
+h3 {
+	margin-top: 30px;
+}
+
+a {
+	color: black;
+}
+</style>
+
+</head>
+<body>
+	<article class="chatfenster">
+		<h2>Cambi-Chat-System</h2>
+		<nav>
+			<ul>
+				<li><a target="_self" href="http://tomcat/CambiChat/Login.html">Login</a></li>
+				<li><a target="_self"
+					href="http://tomcat/CambiChat/Client">Chat</a></li>
+				<li><a target="_self"
+					href="http://tomcat/CambiChat/Settings">Einstellungen</a></li>
+				<li><a target="_self"
+					href="http://tomcat/CambiChat/Logout">Logout</a></li>
+					<li id="admin"><a target="_self" href="http://tomcat/CambiChat/Admin">Admin</a></li>
+			</ul>
+		</nav>
+		<hr>
+		<h3>Admin - Einstellungen</h3>
+		<form id="Settings" name="Settings" method="post"
+			action="http://tomcat/CambiChat/Admin">
+			<p>Wähle eine der Optionen aus...</p>
+			<select name="AdminSettingsSelect" id="SettingsSelect">
+			<option value="newUser">Nutzer anlegen</option>
+			<option value="deleteUser">Nutzer löschen</option>
+			<option value="blockUser">Nutzer sperren</option>				
+			</select><br>
+			<p>Für den Nutzernamen:</p>
+			<input type="text" name="username" id="username">
+			<p>und Passwort (beim Anlegen)</p>
+			<input type="text" name="passwort" id="passwort">
+			<br><br><input value="Option ausführen" type="submit"><br>
+			<br>
+			<hr>
+			<div id="table"></div>
+		</form>
+	</article>
+
+	<iframe name="verstecktesFrame" class="versteckt"></iframe>
+
+</body>
+</html>

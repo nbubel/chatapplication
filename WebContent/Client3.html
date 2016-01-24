@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Cambi-Chat-System | Chatfenster</title>
+<script type="text/javascript" src="ClientControl.js"></script>
+<style>
+.versteckt {
+	position: absolute;
+	top: -10px;
+	left: -10px;
+	width: 10px;
+	height: 10px;
+}
+
+.datumUndName {
+	font-size: small;
+	font-style: italic;
+}
+
+nav ul li {
+	display: inline-block;
+	padding-right: 5px;
+}
+
+nav ul {
+	margin: 0px;
+	padding: 0px 0px 10px 0px;
+}
+
+h3 {
+	margin-top: 30px;
+}
+
+a {
+	color: black;
+}
+
+#buttonsHidden {
+	margin: 20px 0px;
+	display: none;
+}
+
+#buttons {
+	margin: 20px 0px;
+	display: block;
+}
+
+#resetButton {
+	margin-right: 10px;
+}
+</style>
+
+</head>
+<body>
+	<article class="chatfenster">
+		<h2>Cambi-Chat-System</h2>
+		<nav>
+			<ul>
+				<li><a target="_self" href="http://tomcat/CambiChat/Login.html">Login</a></li>
+				<li><a target="_self"
+					href="http://tomcat/CambiChat/Logout">Logout</a></li>
+			</ul>
+		</nav>
+		<hr>
+		<h3>Warnung</h3>
+		<p>Sie wurden vom Administrator blockiert! Bitte wenden Sie sich an ihn!</p>
+		
+	</article>
+
+	<iframe name="verstecktesFrame" class="versteckt"></iframe>
+
+</body>
+</html>

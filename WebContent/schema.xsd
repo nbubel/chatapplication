@@ -12,6 +12,7 @@
 							<xs:element name="time" type="xs:time" />
 							<xs:element name="name" type="xs:string" />
 							<xs:element name="nachricht" type="xs:string" />
+							<xs:element name="group" type="xs:string" />
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>

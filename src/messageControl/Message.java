@@ -1,29 +1,35 @@
 package messageControl;
 
-public class Message {
+import java.io.Serializable;
+
+public class Message implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private String message;
 	private String time;
 	private String date;
 	private int id;
+	private String group;
 	
 	/**
 	 * @param name
 	 * @param message
 	 * @param time 
 	 */
-	public Message(String name, String message, String time, String date, int id) {
+	public Message(String name, String message, String time, String date, int id, String group) {
 		super();
 		this.name = name;
 		this.message = message;
 		this.time = time;
 		this.date = date;
 		this.id = id;
+		this.group = group;
 	}
 	
 	
 	/**
-	 * @return
+	 * @return name
 	 */
 	public String getName() {
 		if (name == null){
@@ -75,14 +81,40 @@ public class Message {
 		this.message = message;
 	}
 	
+	/**
+	 * @param id
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 	
+	/**
+	 * @return id
+	 */
 	public int getId() {
 		return id;
 	}
 	
+	/**
+	 * @param group
+	 */
+	public String getGroup() {
+		return group;
+	}
+	
+	
+	/**
+	 * @return group
+	 */
+	public void setGroup(String group) {
+		this.group = group;
+	}
+
+
+	public void saveMessage() {
+		Protocoll.gebeLogmeldungAus("Speichernachricht mit der ID: " + this.id);
+		dbControl.MessagesDB.saveMessage(this);
+	}
 	
 }
 

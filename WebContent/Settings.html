@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Cambi-Chat-System | Chatfenster</title>
+<title>Cambi-Chat-System | Einstellungen</title>
 <script type="text/javascript" src="ClientControl.js"></script>
 <style>
 .versteckt {
@@ -35,24 +35,10 @@ h3 {
 a {
 	color: black;
 }
-
-#buttonsHidden {
-	margin: 20px 0px;
-	display: none;
-}
-
-#buttons {
-	margin: 20px 0px;
-	display: block;
-}
-
-#resetButton {
-	margin-right: 10px;
-}
 </style>
 
 </head>
-<body onload="init()">
+<body>
 	<article class="chatfenster">
 		<h2>Cambi-Chat-System</h2>
 		<nav>
@@ -67,30 +53,23 @@ a {
 			</ul>
 		</nav>
 		<hr>
-		<h3>Chatfenster</h3>
-		<form id="ChatFormular" name="ChatClient" method="post"
+		<h3>Einstellungen</h3>
+		<form id="Settings" name="Settings" method="post"
 			action="http://tomcat/CambiChat/ChatControl"
 			target="verstecktesFrame">
-			<p>1. Gruppe/Empfänger auswählen:</p>
-			<input id="group-id" type="text" name="group-id"><br> <br>
-			<input value="Gruppe wählen" type="button" onclick="getMessages()">
-			<br> <br>
+			<p>Wähle eine der Optionen aus...</p>
+			<select name="SettingsSelect" id="SettingsSelect">
+			<option value="load">Laden eines Chats</option>
+			<option value="delete">Löschen eines Chats</option>			
+			</select><br>
+			<p>...für die Gruppe:</p>
+			<input type="text" name="Gruppe" id="SettingsGroup">
+			<br><br><input value="Option ausführen" type="button"
+				onclick="doSettings()"><br>
+			<br>
 			<hr>
-			<p>2. Name:</p>
-			<input id="Name" type="text" name="name" disabled="disabled" value="Name"><br>
-			<p>3. Nachricht schreiben:</p>
-			<input id="Nachricht" type="text" name="message"><br> <br>
-			<input value="Abschicken" type="button" onclick="abschicken()">
-			<br> <br>
+			<div id="table"></div>
 		</form>
-		<hr>
-		<div id="buttonsHidden">
-			<input value="Chat zurücksetzen" type="Button"
-				onclick="location.reload()" id="resetButton"><input
-				value="Chat speichern" type="Button" onclick="saveChat()"
-				id="saveButton">
-		</div>
-		<div id="chatverlauf"></div>
 	</article>
 
 	<iframe name="verstecktesFrame" class="versteckt"></iframe>

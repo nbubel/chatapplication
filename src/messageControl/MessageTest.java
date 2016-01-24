@@ -24,7 +24,7 @@ public class MessageTest {
 	@Before
 	public void setUp() throws Exception {
 		cc = new ChatControl();
-		m1 = new Message(null, "Guten Abend", "18:21:10", "2015-12-07", cc.id.getMessageId());
+		m1 = new Message(null, "Guten Abend", "18:21:10", "2015-12-07", cc.id.getMessageId(), "Familie");
 	}
 
 	@After

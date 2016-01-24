@@ -1,0 +1,73 @@
+<project basedir="." default="CLEAN" name="MYCAMBIPROJECT">
+	<description>
+	  build file für mein Semester-Chat-Programm von Niels Bubel
+	  </description>
+
+	<property name="SRC1" location="src" />
+	<property name="WEB" location="WebContent" />
+	<property name="BUILD" location="build" />
+	<property name="DIST" location="dist" />
+	<property name="TESTDI" location="src" />
+	<property name="TESTREPORT" location="report" />
+
+	<path id="junit.class.path">
+		<pathelement location="lib/junit.jar" />
+		<pathelement location="${BUILD}}" />
+	</path>
+
+	<target name="CLEAN" description="clean up">
+		<!-- Delete directorys -->
+		<delete dir="${BUILD}" />
+		<delete dir="${DIST}" />
+	</target>
+
+	<target name="START" depends="CLEAN">
+		<tstamp />
+		<mkdir dir="${BUILD}" />
+	</target>
+
+	<target name="COMPILE" depends="START" description="compile the source">
+		<javac srcdir="${SRC1}" destdir="${BUILD}">
+			<classpath refid="junit.class.path" />
+		</javac>
+	</target>
+
+	<target name="DIST" depends="COMPILE" description="generate the distribution">
+		<mkdir dir="${DIST}/lib" />
+
+		<jar destfile="${DIST}/lib/Chambi-${DSTAMP}.jar">
+			<fileset dir="${BUILD}" />
+			<fileset dir="${WEB}" />
+		</jar>
+	</target>
+
+	<target name="DOC" depends="DIST">
+		<javadoc destdir="docs" author="true" version="true" use="true" windowtitle="Doc Chambi">
+			<fileset dir="${SRC1}">
+				<include name="messageControl/**" />
+			</fileset>
+
+			<doctitle>
+				<![CDATA[<h1>Documentation: Cambi-Chat-Applikation</h1>]]></doctitle>
+		<tag name="todo" scope="all" description="done" />
+		<group title="Group 1 Packages" packages="messageControl.*" />
+	</javadoc>
+</target>
+
+<target name="RUN" depends="DIST">
+	<java jar="${DIST}/lib/Chambi-${DSTAMP}.jar" fork="true" />
+</target>
+
+<target name="TEST" depends="COMPILE">
+	<junit printsummary="on" fork="true" haltonfailure="yes">
+		<classpath refid="junit.class.path" />
+		<formatter type="xml" />
+		<batchtest todir="${TESTREPORT}">
+			<fileset dir="${TESTDI}">
+				<include name="**/*Test*.java" />
+			</fileset>
+		</batchtest>
+	</junit>
+</target>
+
+</project>
