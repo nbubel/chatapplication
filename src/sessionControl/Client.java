@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import messageControl.Protocoll;
 
 /**
- * Servlet implementation class Client
+ * Gibt das Chatfenster aus, wenn der User eingelogt ist!
  */
 @WebServlet("/Client")
 public class Client extends HttpServlet {
@@ -58,7 +58,7 @@ public class Client extends HttpServlet {
 				while ((temp = bf.readLine()) != null) {
 					htmlOut += (temp + "\n");
 				}
-				Protocoll.gebeLogmeldungAus("HTML-Doc für das Chatfenster wurde initialisiert.");
+				Protocoll.gebeLogmeldungAus("HTML-Doc fuer das Chatfenster wurde initialisiert.");
 				bf.close();
 			} catch (IOException e) {
 				Protocoll.gebeLogmeldungAus("Beim Einlesen des HTML-Docs trat ein Fehler auf: " + e);

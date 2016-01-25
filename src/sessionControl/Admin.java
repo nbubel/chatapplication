@@ -15,8 +15,12 @@ import javax.servlet.http.HttpSession;
 
 import messageControl.Protocoll;
 
+
 /**
- * Servlet implementation class Admin
+ * Gibt die Einstellungsseite für den Admin für den Client aus
+ * 
+ * @author Niels Bubel
+ *
  */
 @WebServlet("/Admin")
 public class Admin extends HttpServlet {
@@ -56,7 +60,7 @@ public class Admin extends HttpServlet {
 				while ((temp = bf.readLine()) != null) {
 					htmlOut += (temp + "\n");
 				}
-				Protocoll.gebeLogmeldungAus("HTML-Doc für die Einstellungen wurde initialisiert.");
+				Protocoll.gebeLogmeldungAus("HTML-Doc foer die Einstellungen wurde initialisiert.");
 				bf.close();
 			} catch (IOException e) {
 				Protocoll.gebeLogmeldungAus("Beim Einlesen des HTML-Docs trat ein Fehler auf: " + e);
@@ -83,17 +87,17 @@ public class Admin extends HttpServlet {
 
 		if (adminSetting != null) {
 			if (adminSetting.equals("newUser")) {
-				Protocoll.gebeLogmeldungAus("Der Admin möchte folgende Aktion ausführen", adminSetting);
-				Protocoll.gebeLogmeldungAus("für Nutzer00", username);
+				Protocoll.gebeLogmeldungAus("Der Admin moechte folgende Aktion ausfoehren", adminSetting);
+				Protocoll.gebeLogmeldungAus("foer Nutzer00", username);
 				Protocoll.gebeLogmeldungAus("mit passwort", passwort);
 				dbControl.User.newUser(username, passwort);
 			} else if (adminSetting.equals("deleteUser")) {
-				Protocoll.gebeLogmeldungAus("Der Admin möchte folgende Aktion ausführen", adminSetting);
-				Protocoll.gebeLogmeldungAus("für Nutzer", username);
+				Protocoll.gebeLogmeldungAus("Der Admin moechte folgende Aktion ausfoehren", adminSetting);
+				Protocoll.gebeLogmeldungAus("foer Nutzer", username);
 				dbControl.User.deleteUser(username);
 			} else if (adminSetting.equals("blockUser")){
-				Protocoll.gebeLogmeldungAus("Der Admin möchte folgende Aktion ausführen", adminSetting);
-				Protocoll.gebeLogmeldungAus("für Nutzer", username);
+				Protocoll.gebeLogmeldungAus("Der Admin moechte folgende Aktion ausfoehren", adminSetting);
+				Protocoll.gebeLogmeldungAus("foer Nutzer", username);
 				dbControl.User.blockUser(username);
 			}
 		}
@@ -118,7 +122,7 @@ public class Admin extends HttpServlet {
 				while ((temp = bf.readLine()) != null) {
 					htmlOut += (temp + "\n");
 				}
-				Protocoll.gebeLogmeldungAus("HTML-Doc für die Einstellungen wurde initialisiert.");
+				Protocoll.gebeLogmeldungAus("HTML-Doc foer die Einstellungen wurde initialisiert.");
 				bf.close();
 			} catch (IOException e) {
 				Protocoll.gebeLogmeldungAus("Beim Einlesen des HTML-Docs trat ein Fehler auf: " + e);

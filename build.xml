@@ -1,73 +1,123 @@
-<project basedir="." default="CLEAN" name="MYCAMBIPROJECT">
-	<description>
-	  build file für mein Semester-Chat-Programm von Niels Bubel
-	  </description>
+<?xml version="1.0"?>
+<project name="Demo ant junit" default="compile" basedir=".">
 
-	<property name="SRC1" location="src" />
-	<property name="WEB" location="WebContent" />
-	<property name="BUILD" location="build" />
-	<property name="DIST" location="dist" />
-	<property name="TESTDI" location="src" />
-	<property name="TESTREPORT" location="report" />
+  <property name="dir.build" value="build"/>
+  <property name="dir.src" value="src"/>
+  <property environment="env"/>
 
-	<path id="junit.class.path">
-		<pathelement location="lib/junit.jar" />
-		<pathelement location="${BUILD}}" />
-	</path>
+  <path id="classpath.project">
+    <pathelement path="${dir.build}"/>
+  </path>
 
-	<target name="CLEAN" description="clean up">
-		<!-- Delete directorys -->
-		<delete dir="${BUILD}" />
-		<delete dir="${DIST}" />
-	</target>
+  <target name="install.junit">
+    <fail unless="env.JUNIT_HOME">
+      The JUNIT_HOME environment variable must be set.
+    </fail>
 
-	<target name="START" depends="CLEAN">
-		<tstamp />
-		<mkdir dir="${BUILD}" />
-	</target>
+    <available property="junit.already.installed"
+               file="${ant.home}/lib/junit.jar"/>
 
-	<target name="COMPILE" depends="START" description="compile the source">
-		<javac srcdir="${SRC1}" destdir="${BUILD}">
-			<classpath refid="junit.class.path" />
-		</javac>
-	</target>
+    <copy file="${env.JUNIT_HOME}/junit.jar"
+          todir="${ant.home}/lib"
+          failonerror="true"/>
+   
+    <fail unless="junit.already.installed">
+      junit.jar was not found in ANT_HOME/lib prior to this 
+      build, so it was copied for you. Please try your build again.
+    </fail>
+  </target>
 
-	<target name="DIST" depends="COMPILE" description="generate the distribution">
-		<mkdir dir="${DIST}/lib" />
+  <target name="prepare" depends="install.junit">
+    <mkdir dir="${dir.build}"/>
+  </target>
 
-		<jar destfile="${DIST}/lib/Chambi-${DSTAMP}.jar">
-			<fileset dir="${BUILD}" />
-			<fileset dir="${WEB}" />
-		</jar>
-	</target>
+  <target name="clean"
+          description="Remove all generated files.">
+    <delete dir="${dir.build}"/>
+  </target>
 
-	<target name="DOC" depends="DIST">
-		<javadoc destdir="docs" author="true" version="true" use="true" windowtitle="Doc Chambi">
-			<fileset dir="${SRC1}">
-				<include name="messageControl/**" />
-			</fileset>
+  <target name="compile" depends="prepare"
+          description="Compile all source code.">
+    <javac srcdir="${dir.src}" destdir="${dir.build}">
+      <classpath refid="classpath.project"/>
+    </javac>
+  </target>
 
-			<doctitle>
-				<![CDATA[<h1>Documentation: Cambi-Chat-Applikation</h1>]]></doctitle>
-		<tag name="todo" scope="all" description="done" />
-		<group title="Group 1 Packages" packages="messageControl.*" />
-	</javadoc>
-</target>
+  <target name="junit1" depends="compile">
+    <junit printsummary="on" 
+           fork="false" 
+           haltonfailure="false"
+           failureproperty="tests.failed"
+           showoutput="true">
 
-<target name="RUN" depends="DIST">
-	<java jar="${DIST}/lib/Chambi-${DSTAMP}.jar" fork="true" />
-</target>
+      <classpath refid="classpath.project"/>
+      <formatter type="brief" usefile="false"/>
 
-<target name="TEST" depends="COMPILE">
-	<junit printsummary="on" fork="true" haltonfailure="yes">
-		<classpath refid="junit.class.path" />
-		<formatter type="xml" />
-		<batchtest todir="${TESTREPORT}">
-			<fileset dir="${TESTDI}">
-				<include name="**/*Test*.java" />
-			</fileset>
-		</batchtest>
-	</junit>
-</target>
+      <batchtest>
+        <fileset dir="${dir.src}">
+          <include name="**/Test*.java"/>
+          <exclude name="**/AllTests.java"/>
+        </fileset>
+      </batchtest>
+    </junit>
+
+    <fail if="tests.failed">
+    *******************************************************
+    *******************************************************
+    One or more tests failed. Check the output...
+    *******************************************************
+    *******************************************************
+    </fail>
+  </target>
+
+  <target name="junit2" depends="compile">
+    <!-- you may override this on the command line:
+         ant -Dtestcase=com/java2s/javaxp/junit/TestGame junit2 -->
+    <property name="testcase" 
+              value="com/java2s/javaxp/junit/TestPerson"/>
+
+    <junit fork="false">
+      <classpath refid="classpath.project"/>
+      <formatter type="plain" usefile="false"/>
+
+      <test name="${testcase}"/>
+    </junit>
+  </target>
+
+
+  <target name="junit3" depends="compile">
+    <junit printsummary="on" fork="false" haltonfailure="false">
+
+      <classpath refid="classpath.project"/>
+      <formatter type="xml"/>
+
+      <batchtest todir="${dir.build}">
+        <fileset dir="${dir.src}">
+          <include name="**/Test*.java"/>
+          <exclude name="**/AllTests.java"/>
+        </fileset>
+      </batchtest>
+
+    </junit>
+
+    <junitreport todir="${dir.build}">
+      <fileset dir="${dir.build}">
+        <include name="TEST-*.xml"/>
+      </fileset>
+      <report format="frames" todir="${dir.build}"/>
+    </junitreport>
+
+    <pathconvert dirsep="/" property="reportUrl">
+      <path>
+        <pathelement location="${dir.build}/index.html"/>
+      </path>
+    </pathconvert>
+
+    <exec executable="cmd" os="Windows XP">
+      <arg value="/C"/>
+      <arg value="${reportUrl}"/>
+    </exec>
+  </target>
 
 </project>
+

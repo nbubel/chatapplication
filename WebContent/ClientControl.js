@@ -11,6 +11,13 @@ var MessageID = 1;
 var saveChatFlag = false;
 var savepoint = 0;
 
+
+/*
+ * Chat-Client, der die Nachrichten per XMLHTTP-Request mit der GET bzw. POST
+ * Methode vom bzw. an den Server abfragt bzw. schickt.
+ * 
+ * author: Niels Bubel
+ */
 function init(){
 	servlet = "http://tomcat/CambiChat/GetUser"
 	console.log("Start request");
@@ -115,7 +122,6 @@ function bearbeiteHttpGetMessages() {
 				chatverlauf = document.getElementById("chatverlauf");
 				neuerParagraph = document.createElement("p");
 				neuerParagraph.setAttribute("class", "nachricht"); // CSS
-				// Klasse
 				neueZeile = document.createElement("div");
 				neueZeile.setAttribute("class", "datumUndName");
 				neuNameDate = document
@@ -161,7 +167,7 @@ function bearbeiteHttpGetMessages() {
 function postMessage(name, nachricht, empfaenger, setting) {
 	if (httpPostMessage.readyState == 4 || httpPostMessage.readyState == 0) {
 		if(setting != null){
-		alert("Post settings to: http://tomcat/CambiChat/ChatControl");
+		console.log("Post settings to: http://tomcat/CambiChat/ChatControl");
 		httpPostMessage.open("POST",
 				"http://tomcat/CambiChat/ChatControl?setting=true", true);
 		httpPostMessage.setRequestHeader("Content-type", "application/xml");
@@ -170,7 +176,7 @@ function postMessage(name, nachricht, empfaenger, setting) {
 				+ "<messages xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://tomcat/CambiChat/schema.xsd'>"
 				+ "<message><setting>" + setting +"</setting><group>" + empfaenger
 				+ "</group>" + "</message></messages>";
-			alert("Send settings to server:" + xmlMessage);
+			console.log("Send settings to server:" + xmlMessage);
 		}
 		else {
 			console.log("Post message to: http://tomcat/CambiChat/ChatControl");
@@ -218,11 +224,11 @@ function doSettings() {
 	selectedOption = document.getElementById("SettingsSelect").value;
 	selectedGroup = document.getElementById("SettingsGroup").value;
 	if (selectedOption == "load"){
-		alert("Load!");
+		console.log("Load!");
 		postMessage(null, null, selectedGroup, "load");
 	}
 	else {
-		alert("delete!");
+		console.log("delete!");
 		postMessage(null, null, selectedGroup, "delete");
 	}
 }
@@ -248,3 +254,4 @@ function getTime() {
 	var seconds = time.getSeconds();
 	return hours + ":" + minutes + ":" + seconds;
 }
+

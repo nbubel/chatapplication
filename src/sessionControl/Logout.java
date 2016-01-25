@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import messageControl.Protocoll;
 
 /**
- * Servlet implementation class Logout
+ * Logt einen User aus
  */
 @WebServlet("/Logout")
 public class Logout extends HttpServlet {
@@ -50,7 +50,7 @@ public class Logout extends HttpServlet {
 				while ((temp = bf.readLine()) != null) {
 					htmlOut += (temp + "\n");
 				}
-				Protocoll.gebeLogmeldungAus("HTML-Doc für das Chatfenster wurde initialisiert.");
+				Protocoll.gebeLogmeldungAus("HTML-Doc fuer das Chatfenster wurde initialisiert.");
 				bf.close();
 			} catch (IOException e) {
 				Protocoll.gebeLogmeldungAus("Beim Einlesen des HTML-Docs trat ein Fehler auf: " + e);

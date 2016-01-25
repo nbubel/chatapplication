@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class GetUser
+ * Gibt den Usernamen des Nutzers zurück, der sich eingeloggt hat und den Chat benutzt.
  */
 @WebServlet("/GetUser")
 public class GetUser extends HttpServlet {
@@ -36,9 +36,6 @@ public class GetUser extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.print(username);
 		out.close();
-		
-		
-
 	}
 
 	/**

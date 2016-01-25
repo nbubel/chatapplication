@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <messages xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://localhost:8080/CambiChat/schema.xsd">
-<message><id>1</id><date>2015-12-07</date><time>18:21:10</time><name>Niels</name><nachricht>Guten Abend</nachricht></message>
+<message><id>1</id><date>2015-12-07</date><time>18:21:10</time><name>Niels</name><nachricht>Guten Abend</nachricht><group>Bubel</group></message>
 </messages>

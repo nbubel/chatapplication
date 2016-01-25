@@ -9,8 +9,21 @@ import java.util.ArrayList;
 import messageControl.Message;
 import messageControl.Protocoll;
 
+/**
+ * Führt die CRUD-Operationen in der Datenbank für die Nachrichtenobjekte aus
+ * 
+ * @author Niels
+ *
+ */
 public class Messages {
 
+	/**
+	 * Lädt die Nachrichten der übergebenen Gruppe und gibt sie als ArrayList
+	 * wieder zurück
+	 * 
+	 * @param group
+	 * @return ArrayList<Message>
+	 */
 	public static ArrayList<Message> getMessages(String group) {
 
 		ArrayList<Message> messageListe = new ArrayList<Message>();
@@ -20,7 +33,7 @@ public class Messages {
 			Connection connection = dbControl.DBConnection.getInstance().dbConnection;
 			Statement statement = connection.createStatement();
 			ResultSet result;
-			result = statement.executeQuery("select * from messages where gruppe like '" + group +"'");
+			result = statement.executeQuery("select * from messages where gruppe like '" + group + "'");
 			// Protocoll.gebeLogmeldungAus("Ergebnis der User-Abfrage:",
 			// result);
 
@@ -36,51 +49,61 @@ public class Messages {
 						"Message " + m.getId() + " von " + m.getName() + " mit dem Text: " + m.getMessage());
 			}
 			connection.close();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 		return messageListe;
 	}
-	
+
+	/**
+	 * Speichert eine Nachricht in der Datnbank und gibt ein boolean zurück, ob
+	 * die Operation erfolgreich war
+	 * 
+	 * @param m
+	 *            Message
+	 * @return boolean
+	 */
 	public static boolean saveMessage(Message m) {
 		Protocoll.gebeLogmeldungAus("Speichere Nachricht in der Datenbank von " + m.getName());
-		
+
 		try {
-		Connection connection = dbControl.DBConnection.getInstance().dbConnection;
-		Statement statement = connection.createStatement();
-		statement.executeUpdate("INSERT INTO messages VALUES (null,'" + m.getName() + "','" + m.getMessage() +"','" + m.getTime() + "', '" + m.getDate() + "'," + m.getId() + ",'" + m.getGroup() +"')");
-		
-		connection.close();
-		
+			Connection connection = dbControl.DBConnection.getInstance().dbConnection;
+			Statement statement = connection.createStatement();
+			statement.executeUpdate("INSERT INTO messages VALUES (null,'" + m.getName() + "','" + m.getMessage() + "','"
+					+ m.getTime() + "', '" + m.getDate() + "'," + m.getId() + ",'" + m.getGroup() + "')");
+
+			connection.close();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
 		}
-
-		return true;	
-		
+		return true;
 	}
-	
-	
+
+	/**
+	 * Löscht alle Nachrichten einer Gruppe aus der Datenbank und gibt ein
+	 * boolean zurück, ob die Operation erfolgreich war
+	 * 
+	 * @param group
+	 * @return boolean
+	 */
 	public static boolean deleteMessages(String group) {
-		Protocoll.gebeLogmeldungAus("Lösche Nachricht in der Datenbank der Gruppe " + group);
-		
+		Protocoll.gebeLogmeldungAus("Loesche Nachricht in der Datenbank der Gruppe " + group);
+
 		try {
-		Connection connection = dbControl.DBConnection.getInstance().dbConnection;
-		Statement statement = connection.createStatement();
-		statement.executeUpdate("Delete From messages where gruppe like '" + group + "' ");
-		
-		connection.close();
-		
+			Connection connection = dbControl.DBConnection.getInstance().dbConnection;
+			Statement statement = connection.createStatement();
+			statement.executeUpdate("Delete From messages where gruppe like '" + group + "' ");
+
+			connection.close();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
 		}
-
-		return true;	
-		
+		return true;
 	}
 
 }

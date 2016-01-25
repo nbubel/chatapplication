@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import messageControl.Protocoll;
 
 /**
- * Servlet implementation class Settings
+ * Gibt die Seite mit den Einsctellungen aus
  */
 @WebServlet("/Settings")
 public class Settings extends HttpServlet {
@@ -57,7 +57,7 @@ public class Settings extends HttpServlet {
 				while ((temp = bf.readLine()) != null) {
 					htmlOut += (temp + "\n");
 				}
-				Protocoll.gebeLogmeldungAus("HTML-Doc für die Einstellungen wurde initialisiert.");
+				Protocoll.gebeLogmeldungAus("HTML-Doc fuer die Einstellungen wurde initialisiert.");
 				bf.close();
 			} catch (IOException e) {
 				Protocoll.gebeLogmeldungAus("Beim Einlesen des HTML-Docs trat ein Fehler auf: " + e);

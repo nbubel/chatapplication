@@ -8,15 +8,25 @@ import java.sql.*;
 import messageControl.Protocoll;
 
 /**
+ * Prüft, ob ein User oder ein Admin sich mit korrekten Daten, die in der Datenbank stehen,
+ * angemeldet hat.
+ * 
  * @author Niels
  *
  */
 public class CheckUser {
 
+	/**
+	 * Prüft, ob ein User sich mit korrekten Daten, die in der Datenbank stehen,
+	 * angemeldet hat.
+	 * 
+	 * @param name
+	 * @param passwort
+	 * @return boolean
+	 */
 	public static boolean checkUser(String name, String passwort) {
 		boolean check = false;
 		try {
-
 			Connection connection = dbControl.DBConnection.getInstance().dbConnection;
 			PreparedStatement statement = connection.prepareStatement("select * from user where name=? and password=?");
 			statement.setString(1, name);
@@ -34,6 +44,12 @@ public class CheckUser {
 		return check;
 	}
 
+	/**
+	 * Prüft, ob ein User ein Admin ist
+	 * 
+	 * @param name
+	 * @return
+	 */
 	public static boolean checkUser(String name) {
 		boolean check = false;
 		try {
@@ -56,6 +72,12 @@ public class CheckUser {
 		return check;
 	}
 
+	/**
+	 * Prüft, ob ein User gesperrt wurde.
+	 * 
+	 * @param name
+	 * @return
+	 */
 	public static boolean checkBlockedUser(String name) {
 		boolean check = false;
 		try {
